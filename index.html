@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxie-FM</title>
-    <link rel="stylesheet"href="assets/csss/style.css">
+    <title>Super Playlist</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/js/app.js" defer></script>
+    <style>
+        /* Style pour centrer le lecteur, la liste des musiques et le disque */
+        .centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Utilise toute la hauteur de la fenêtre */
+        }
+    </style>
 </head>
 <body>
+    <div class="centered-container">
+        <ul id="playlist">
+            <!-- Loop js dynamique -->
+        </ul>
 
-    <h1>Accueil</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eligendi adipisci sunt ducimus, iure excepturi, error impedit libero nemo dolore fugiat, accusamus laborum? Consequuntur nulla alias atque iste rem amet!</p>
-    
-    <img src="assets/pictures/vinyle.webp">
+        <div class="disque pause" id="disque">
+            <img class="vinyle pause" id="vinyle" src="assets/pictures/vinyle3_2.png" alt="Disque Vinyle">
+            <img class="cover pause" id="cover" src="uploads/covers/floya-lights_out.jpg" alt="">
+            </div>
+
+<div class="lecteur">
+    <audio id="lecteur" controls src=""></audio>
+</div>
+
+<button id="randomButton">Musique Aléatoire</button>
+</div>
+    </div>
 </body>
 </html>
