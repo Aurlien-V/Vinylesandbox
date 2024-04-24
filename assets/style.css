@@ -97,8 +97,8 @@ body {
 @media only screen and (max-width: 768px) {
     /* Adapter le style pour les appareils de petite taille ici */
     .vinyle {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
     }
     .cover {
         width: 100px;
