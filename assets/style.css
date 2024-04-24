@@ -1,0 +1,119 @@
+/* Animation pour faire tourner le disque */
+@keyframes turnAround {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Style pour la pochette d'album */
+.cover {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Faire en sorte que la cover soit un cercle */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Style pour le disque vinyle */
+.vinyle {
+    width: 350px;
+    height: 350px;
+}
+
+/* Style pour le conteneur du disque */
+.disque {
+    position: relative;
+    display: inline-block;
+    animation: turnAround 5s infinite linear;
+}
+
+/* Classe pour mettre en pause l'animation */
+.pause{
+    animation-play-state: paused;
+}
+
+/* Style pour les éléments de la playlist */
+li{
+    background-color: #ffa500; /* Orange */
+    color: #fff; /* Blanc */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif; /* Police de caractères moderne */
+    font-size: 10px;
+}
+
+/* Style pour l'élément de la playlist en cours de lecture */
+li.playing {
+    background-color: #ff4500; /* Couleur différente pour l'élément en cours de lecture */
+    color: #fff; /* Couleur du texte */
+}
+
+/* Style pour le corps de la page */
+body {
+    background-color: #000; /* Noir */
+    font-family: 'Courier New', Courier, monospace; /* Police de caractères monospace rétro */
+}
+
+/* Style pour les boutons du lecteur */
+#audio-controls button {
+    background-color: #ffa500; /* Orange */
+    color: #fff; /* Blanc */
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style pour les boutons de contrôle du lecteur */
+#audio-controls button:hover {
+    background-color: #ff4500; /* Orange foncé au survol */
+}
+
+/* Style pour la disposition de la playlist et du lecteur */
+.lecteur-et-playlist {
+    display: flex;
+    align-items: center; /* Alignement vertical */
+}
+
+/* Style pour le lecteur audio */
+.lecteur {
+    margin-right: 20px; /* Espace entre le lecteur et la liste des musiques */
+}
+
+/* Media query pour les appareils de petite taille (smartphones) */
+@media only screen and (max-width: 768px) {
+    /* Adapter le style pour les appareils de petite taille ici */
+    .vinyle {
+        width: 300px;
+        height: 300px;
+    }
+    .cover {
+        width: 100px;
+        height: 100px;
+    }
+    li {
+        font-size: 14px;
+    }
+    #playlist {
+        max-height: 50vh; /* Réduire la hauteur de la playlist */
+        overflow-y: auto; /* Ajouter une barre de défilement verticale si nécessaire */
+    }
+}
+
+/* Media query pour les appareils de taille moyenne à grande (tablettes et ordinateurs) */
+@media only screen and (min-width: 769px) {
+    /* Adapter le style pour les tablettes et ordinateurs ici */
+}

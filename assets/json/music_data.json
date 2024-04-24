@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "cover": "harry_styles-watermelon_sugar.jpg",
+    "sound": "Harry_Styles-Watermelon_Sugar.mp3",
+    "title": "Harry Styles - Watermelon Sugar",
+    "category": "pop"
+  },
+  {
+    "id": 2,
+    "cover": "bakermat-baiana.jpg",
+    "sound": "Bakermat-Baiana.mp3",
+    "title": "Bakermat - Baianá",
+    "category": "electro"
+  },
+  {
+    "id": 3,
+    "cover": "maroon_5-lost.jpg",
+    "sound": "Maroon_5-Lost.mp3",
+    "title": "Maroon 5 - Lost",
+    "category": "pop"
+  },
+  {
+    "id": 4,
+    "cover": "jonas_blue-dont_call_it_love.jpg",
+    "sound": "Jonas_Blue-Dont_Call_It_Love.mp3",
+    "title": "Jonas Blue, EDX ft. Alex Mills - Don't Call It Love",
+    "category": "electro"
+  }
+]
