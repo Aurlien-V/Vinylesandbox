@@ -4,36 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Playlist</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/app.js" defer></script>
-    <style>
-        /* Style pour centrer le lecteur, la liste des musiques et le disque */
-        .centered-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh; /* Utilise toute la hauteur de la fenêtre */
-        }
-    </style>
 </head>
 <body>
-    <div class="centered-container">
-        <ul id="playlist">
-            <!-- Loop js dynamique -->
-        </ul>
+    <div class="container">
+        <div id="playlist-container">
+            <ul id="playlist">
+                <!-- Loop js dynamique -->
+            </ul>
+        </div>
 
         <div class="disque pause" id="disque">
             <img class="vinyle pause" id="vinyle" src="assets/pictures/vinyle3_2.png" alt="Disque Vinyle">
             <img class="cover pause" id="cover" src="uploads/covers/floya-lights_out.jpg" alt="">
-            </div>
+        </div>
 
-<div class="lecteur">
-    <audio id="lecteur" controls src=""></audio>
-</div>
+        <div class="lecteur">
+            <audio id="lecteur" controls src=""></audio>
+        </div>
 
-<button id="randomButton">Musique Aléatoire</button>
-</div>
+        <button id="randomButton">Musique Aléatoire</button>
     </div>
 </body>
 </html>

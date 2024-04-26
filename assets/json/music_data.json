@@ -26,5 +26,26 @@
     "sound": "Jonas_Blue-Dont_Call_It_Love.mp3",
     "title": "Jonas Blue, EDX ft. Alex Mills - Don't Call It Love",
     "category": "electro"
+  },
+  {
+    "id": 5,
+    "cover": "Jonas_Blue-Dont_Wake_Me_Up.jpg",
+    "sound": "Jonas_Blue-Dont_Wake_Me_Up.mp3",
+    "title": "Jonas_Blue-Dont_Wake_Me_Up",
+    "category": "electro"
+  },
+  {
+    "id": 6,
+    "cover": "Jonas_Blue-Perfect_Strangers.jpg",
+    "sound": "Jonas_Blue-Perfect_Strangers.mp3",
+    "title": "Jonas_Blue-Perfect_Strangers",
+    "category": "pop"
+  },
+  {
+    "id": 7,
+    "cover": "Floya-Lights_Out.jpg",
+    "sound": "Floya-Lights_Out.mp3",
+    "title": "Floya-Lights_Out",
+    "category": "electro"
   }
 ]
