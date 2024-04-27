@@ -70,6 +70,7 @@ function addEventListeners() {
 
     lecteur.addEventListener("ended", () => {
         disqueRotation.classList.add("pause");
+        updateRandomMusic(data);
     });
 }
 
@@ -120,7 +121,6 @@ function updateRandomMusic(data) {
 
 // Gestionnaire d'événement pour le clic sur le bouton de musique aléatoire
 randomButton.addEventListener("click", () => {
-    lecteur.pause(); // Pausez la musique en cours de lecture
     updateRandomMusic(data);
 });
 
@@ -135,29 +135,19 @@ randomButton.addEventListener("click", () => {
     // Ajouter les écouteurs d'événements
     addEventListeners();
 })();
-// Ajouter un gestionnaire d'événement pour la fin de la musique
+
+// Ajouter un gestionnaire d'événements pour détecter la fin de la musique
 lecteur.addEventListener("ended", () => {
-    // Vérifier si la lecture aléatoire est activée
-    const isRandom = document.querySelector("li.random.playing");
-    if (isRandom) {
-        // Si la lecture aléatoire est activée, jouer une nouvelle musique aléatoire
-        updateRandomMusic(data);
-    } else {
-        // Sinon, jouer la chanson suivante dans la playlist
-        playNextSong();
-    }
+    disqueRotation.classList.add("pause");
+    updateRandomMusic(data);
 });
 
-// Fonction pour jouer la chanson suivante dans la playlist
-function playNextSong() {
-    const currentPlaying = document.querySelector("li.playing");
-    if (currentPlaying) {
-        const nextSong = currentPlaying.nextElementSibling;
-        if (nextSong) {
-            nextSong.click(); // Déclencher un clic sur l'élément suivant pour démarrer la lecture
-        } else {
-            // Si nous sommes à la fin de la playlist, arrêter la lecture
-            lecteur.pause();
-        }
-    }
-}
+// Ajouter un gestionnaire d'événements pour détecter lorsque la musique est en pause
+lecteur.addEventListener("pause", () => {
+    disqueRotation.classList.add("pause");
+});
+
+// Ajouter un gestionnaire d'événements pour détecter lorsque la musique reprend la lecture
+lecteur.addEventListener("play", () => {
+    disqueRotation.classList.remove("pause");
+});

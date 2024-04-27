@@ -1,51 +1,44 @@
 [
   {
     "id": 1,
-    "cover": "harry_styles-watermelon_sugar.jpg",
-    "sound": "Harry_Styles-Watermelon_Sugar.mp3",
-    "title": "Harry Styles - Watermelon Sugar",
+    "cover": "lef2015.jpg",
+    "sound": "lef2015.mp3",
+    "title": "L.E.J - SUMMER 2015",
     "category": "pop"
   },
   {
     "id": 2,
-    "cover": "bakermat-baiana.jpg",
-    "sound": "Bakermat-Baiana.mp3",
-    "title": "Bakermat - Baianá",
+    "cover": "mozinor.jpg",
+    "sound": "Romanian-Boy.mp3",
+    "title": "mozinor Romanian Boy",
     "category": "electro"
   },
   {
     "id": 3,
-    "cover": "maroon_5-lost.jpg",
-    "sound": "Maroon_5-Lost.mp3",
-    "title": "Maroon 5 - Lost",
-    "category": "pop"
-  },
-  {
-    "id": 4,
-    "cover": "jonas_blue-dont_call_it_love.jpg",
-    "sound": "Jonas_Blue-Dont_Call_It_Love.mp3",
-    "title": "Jonas Blue, EDX ft. Alex Mills - Don't Call It Love",
-    "category": "electro"
-  },
-  {
-    "id": 5,
     "cover": "Nelly-Furtado-Promiscuous.jpg",
     "sound": "Nelly-Furtado-Promiscuous.mp3",
     "title": "Nelly-Furtado-Promiscuous",
     "category": "electro"
   },
   {
-    "id": 6,
+    "id": 4,
     "cover": "Brandy-Monica-Modjo.jpg",
     "sound": "Brandy-Monica-Modjo.mp3",
     "title": "Brandy-Monica-Modjo",
     "category": "zoulou"
   },
   {
-    "id": 7,
-    "cover": "Floya-Lights_Out.jpg",
-    "sound": "Floya-Lights_Out.mp3",
-    "title": "Floya-Lights_Out",
+    "id": 5,
+    "cover": "MEUTE.jpg",
+    "sound": "meute.mp3",
+    "title": "MEUTE You and Me",
     "category": "electro"
+  },
+  {
+    "id": 6,
+    "cover": "corse.jpg",
+    "sound": "corse.mp3",
+    "title": "Le sandwich corse de Renaud Rutten",
+    "category": "blague"
   }
 ]
