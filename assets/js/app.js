@@ -23,7 +23,9 @@ async function fetchMusicData() {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json();
+        data = await response.json();
+        buildPlaylist(data);
+        addEventListeners();
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
@@ -36,50 +38,20 @@ function buildPlaylist(data) {
     });
 }
 
-// Fonction pour ajouter les écouteurs d'événements
-function addEventListeners() {
+// Fonction pour mettre à jour la musique en cours de lecture
+function updateMusic(music) {
+    lecteur.src = `${config.urlSound}${music.sound}`;
+    cover.src = `${config.urlCover}${music.cover}`;
+    lecteur.play();
+    // Retirer la classe 'playing' de tous les éléments de la playlist
     const allLi = document.querySelectorAll("li");
-    allLi.forEach((li) => {
-        li.addEventListener("click", function (elem) {
-            // Retirer la classe 'playing' de tous les éléments de la playlist
-            allLi.forEach(item => item.classList.remove('playing'));
-
-            const id = parseInt(li.id);
-            const searchById = data.find((element) => element.id === id);
-            lecteur.src = `${config.urlSound}${searchById.sound}`;
-            lecteur.play();
-            cover.src = `${config.urlCover}${searchById.cover}`;
-            if (disque.classList.contains("pause")) {
-                disque.classList.remove("pause");
-            }
-            // Ajouter la classe 'playing' à l'élément cliqué
-            li.classList.add('playing');
-        });
-    });
-
-    // Écouter les événements de lecture audio pour arrêter ou reprendre la rotation du disque
-    lecteur.addEventListener("play", () => {
-        disqueRotation.classList.remove("pause");
-        // Déplacer l'élément en cours de lecture en haut de la liste
-        moveSelectedToTop();
-    });
-
-    lecteur.addEventListener("pause", () => {
-        disqueRotation.classList.add("pause");
-    });
-
-    lecteur.addEventListener("ended", () => {
-        disqueRotation.classList.add("pause");
-        updateRandomMusic(data);
-    });
-}
-
-// Fonction pour déplacer l'élément sélectionné en haut de la liste
-function moveSelectedToTop() {
-    const selectedLi = document.querySelector("li.playing");
-    if (selectedLi) {
-        playlist.prepend(selectedLi); // Déplace l'élément en haut de la liste
-    }
+    allLi.forEach(item => item.classList.remove('playing'));
+    // Trouver l'élément de la playlist correspondant à la nouvelle musique
+    const selectedLi = document.getElementById(music.id);
+    // Ajouter la classe 'playing' à l'élément de la playlist
+    selectedLi.classList.add('playing');
+    // Déplacer l'élément en cours de lecture en haut de la liste
+    playlist.prepend(selectedLi);
 }
 
 // Fonction pour sélectionner une musique aléatoire
@@ -93,61 +65,37 @@ function getRandomMusic(musicData) {
     return randomMusic;
 }
 
-// Fonction pour mettre à jour la musique aléatoire
-function updateRandomMusic(data) {
-    const randomMusic = getRandomMusic(data);
-    lecteur.src = `${config.urlSound}${randomMusic.sound}`;
-    cover.src = `${config.urlCover}${randomMusic.cover}`;
-    lecteur.play();
-
-    // Retirer la classe 'playing' de tous les éléments de la playlist
+// Fonction pour ajouter les écouteurs d'événements
+function addEventListeners() {
     const allLi = document.querySelectorAll("li");
-    allLi.forEach(item => item.classList.remove('playing'));
-    
-    // Trouver l'élément de la playlist correspondant à la nouvelle musique aléatoire
-    const selectedLi = document.getElementById(randomMusic.id);
-    // Ajouter la classe 'playing' à l'élément de la playlist correspondant
-    selectedLi.classList.add('playing');
+    allLi.forEach((li) => {
+        li.addEventListener("click", function (elem) {
+            const id = parseInt(li.id);
+            const music = data.find((element) => element.id === id);
+            updateMusic(music);
+        });
+    });
 
-    // Retirer la classe 'random' de tous les éléments de la playlist
-    allLi.forEach(item => item.classList.remove('random'));
-    
-    // Ajouter la classe 'random' à l'élément de la playlist correspondant à la nouvelle musique aléatoire
-    selectedLi.classList.add('random');
+    // Gestionnaire d'événement pour le clic sur le bouton de musique aléatoire
+    randomButton.addEventListener("click", () => {
+        const randomMusic = getRandomMusic(data);
+        updateMusic(randomMusic);
+    });
 
-    // Déplacer l'élément en cours de lecture en haut de la liste
-    moveSelectedToTop();
+    // Écouter les événements de lecture audio pour arrêter ou reprendre la rotation du disque
+    lecteur.addEventListener("play", () => {
+        disqueRotation.classList.remove("pause");
+    });
+
+    lecteur.addEventListener("pause", () => {
+        disqueRotation.classList.add("pause");
+    });
+
+    lecteur.addEventListener("ended", () => {
+        const randomMusic = getRandomMusic(data);
+        updateMusic(randomMusic);
+    });
 }
 
-// Gestionnaire d'événement pour le clic sur le bouton de musique aléatoire
-randomButton.addEventListener("click", () => {
-    updateRandomMusic(data);
-});
-
-// Point d'entrée
-(async () => {
-    // Récupérer les données
-    data = await fetchMusicData();
-
-    // Construire la playlist
-    buildPlaylist(data);
-
-    // Ajouter les écouteurs d'événements
-    addEventListeners();
-})();
-
-// Ajouter un gestionnaire d'événements pour détecter la fin de la musique
-lecteur.addEventListener("ended", () => {
-    disqueRotation.classList.add("pause");
-    updateRandomMusic(data);
-});
-
-// Ajouter un gestionnaire d'événements pour détecter lorsque la musique est en pause
-lecteur.addEventListener("pause", () => {
-    disqueRotation.classList.add("pause");
-});
-
-// Ajouter un gestionnaire d'événements pour détecter lorsque la musique reprend la lecture
-lecteur.addEventListener("play", () => {
-    disqueRotation.classList.remove("pause");
-});
+// Appel initial pour récupérer les données de musique
+fetchMusicData();
